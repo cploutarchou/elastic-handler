@@ -1,5 +1,7 @@
 mod models {
     use serde::{Deserialize, Serialize};
+    use serde::{Deserialize, Serialize};
+    use serde::{Deserialize, Serialize};
 
     #[derive(Serialize, Deserialize, Debug)]
     pub struct Channel {
@@ -43,5 +45,45 @@ mod models {
         pub change_info: bool,
         pub invite_users: bool,
         pub pin_messages: bool,
+    }
+    #[derive(Serialize, Deserialize, Debug)]
+    pub struct Token {
+        pub token_address: String,
+        pub balance: f64,
+        pub decimals: u8,
+        pub ui_amount_string: String,
+        pub token_name: String,
+        pub token_symbol: String,
+        pub metadata_source: String,
+        pub token_type: String,
+        pub market_overview: MarketOverview,
+    }
+
+    #[derive(Serialize, Deserialize, Debug)]
+    pub struct Metadata {
+        pub key: String,
+        pub update_authority: String,
+        pub mint: String,
+        pub name: String,
+        pub symbol: String,
+        pub uri: String,
+        pub seller_fee_basis_points: String,
+        pub primary_sale_happened: String,
+        pub is_mutable: String,
+        pub edition_nonce: String,
+        pub token_standard: String,
+    }
+
+    #[derive(Serialize, Deserialize, Debug)]
+    pub struct MarketOverview {
+        pub price: f64,
+        pub market_cap: f64,
+        pub current_supply: f64,
+    }
+
+    #[derive(Serialize, Deserialize, Debug)]
+    pub struct NftData {
+        pub metadata: Metadata,
+        pub market_overview: Option<MarketOverview>,
     }
 }
